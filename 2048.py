@@ -1,17 +1,17 @@
 #!/usr/bin/python
 
 def cw(gameMap):
-    return zip(*gameMap[::-1])
+    return list(zip(*gameMap))[::-1]
 
 def ccw(gameMap):
-    return zip(*gameMap)[::-1]
+    return list(zip(*gameMap))[::-1]
 
 def printMap(gameMap):
     for row in gameMap:
-        print '\t'.join(map(str, row))
+        print ('\t'.join(map(str, row)))
 
 def moveMap(direction, gameMap):
-    print direction
+    print(direction)
     if direction == 'up':
         gameMap = cw(solve(ccw(gameMap)))
     elif direction == 'down':
@@ -25,12 +25,12 @@ def moveMap(direction, gameMap):
 def solve(gameMap):
     result = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
 
-    for i in xrange(4):
+    for i in range(4):
         posn   = 0
         mapRow = gameMap[i]
         resRow = result[i]
 
-        for j in xrange(4):
+        for j in range(4):
             mapNum = mapRow[j]
             resNum = resRow[posn]
 
